@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kairo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.16.4/framer-motion.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-theme="light">
+    <div class="container is-fluid">
+        <div class="notification-area" id="notificationArea"></div>
+
+        <div class="hero is-small">
+            <div class="hero-body">
+                <h1 class="title has-text-centered" style="color: var(--primary-color)">
+                    <i class="fas fa-clock"></i> Kairo Clock App
+                </h1>
+
+                <div class="theme-selector">
+                    <div class="theme-btn light active" data-theme="light" title="Light Theme"></div>
+                    <div class="theme-btn dark" data-theme="dark" title="Dark Theme"></div>
+                    <div class="theme-btn neon" data-theme="neon" title="Neon Theme"></div>
+                    <div class="theme-btn ocean" data-theme="ocean" title="Ocean Theme"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs is-centered is-boxed">
+            <ul>
+                <li class="is-active" data-tab="clock">
+                    <a><i class="fas fa-clock"></i> Clock</a>
+                </li>
+                <li data-tab="stopwatch">
+                    <a><i class="fas fa-stopwatch"></i> Stopwatch</a>
+                </li>
+                <li data-tab="timer">
+                    <a><i class="fas fa-hourglass-half"></i> Timer</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Clock Tab -->
+        <div id="clockTab" class="tab-content">
+            <div class="clock-container">
+                <div class="digital-clock" id="digitalClock">00:00:00</div>
+                <div class="date-display" id="dateDisplay">
+                    Monday, January 1, 2024
+                </div>
+            </div>
+        </div>
+
+        <!-- Stopwatch Tab -->
+        <div id="stopwatchTab" class="tab-content" style="display: none">
+            <div class="clock-container">
+                <div class="stopwatch-display" id="stopwatchDisplay">00:00:00</div>
+                <div class="control-buttons">
+                    <button class="btn-control success" id="startStopBtn">Start</button>
+                    <button class="btn-control" id="lapResetBtn">Lap</button>
+                    <button class="btn-control danger" id="clearLapsBtn">Clear</button>
+                </div>
+                <div class="laps-container" id="lapsContainer"></div>
+            </div>
+        </div>
+
+        <!-- Timer Tab -->
+        <div id="timerTab" class="tab-content" style="display: none">
+            <div class="clock-container">
+                <div class="progress-ring" id="progressRing">
+                    <svg>
+                        <circle class="background" cx="100" cy="100" r="90"></circle>
+                        <circle class="progress" cx="100" cy="100" r="90" id="progressCircle"></circle>
+                    </svg>
+                </div>
+                <div class="timer-display" id="timerDisplay">00:00</div>
+                <div class="timer-inputs">
+                    <input type="number" class="timer-input" id="minutesInput" placeholder="MM" min="0" max="59"
+                        value="25" />
+                    <span style="font-size: 1.5rem; align-self: center">:</span>
+                    <input type="number" class="timer-input" id="secondsInput" placeholder="SS" min="0" max="59"
+                        value="0" />
+                </div>
+                <div class="control-buttons">
+                    <button class="btn-control success" id="startTimerBtn">
+                        Start
+                    </button>
+                    <button class="btn-control" id="pauseTimerBtn">Pause</button>
+                    <button class="btn-control danger" id="resetTimerBtn">Reset</button>
+                </div>
+                <div class="control-buttons">
+                    <button class="btn-control" id="pomodoro25">25 min</button>
+                    <button class="btn-control" id="pomodoro15">15 min</button>
+                    <button class="btn-control" id="pomodoro5">5 min</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
